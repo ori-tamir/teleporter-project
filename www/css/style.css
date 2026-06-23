@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+/* --- 1. Global Theme & Smooth Flow --- */
+html {
+    scroll-behavior: smooth; /* גלילה חלקה בין חלקי הדף */
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #f0f4f8; /* רקע בהיר נקי ומרגיע */
+    /* רשת עתידנית סופר עדינה */
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 184, 255, 0.03) 0%, transparent 80%),
+        linear-gradient(rgba(0, 184, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 184, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+    color: #1a1d23;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* אלמנט זרימה - מעבר רך בין סקשנים */
+section {
+    position: relative;
+    padding: 100px 0;
+}
+
+/* --- 2. The New "Soft Tech" Glass Cards --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7) !important; /* לבן שקוף למחצה */
+    backdrop-filter: blur(15px); /* טשטוש חזק שיוצר עומק */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 24px;
+    color: #1a1d23 !important;
+    /* צל רך מאוד עם נגיעה של כחול */
+    box-shadow: 0 20px 40px rgba(0, 120, 255, 0.08), 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.85) !important;
+    transform: translateY(-10px);
+    border-color: rgba(0, 240, 255, 0.5) !important;
+    box-shadow: 0 30px 60px rgba(0, 120, 255, 0.15);
+}
+
+.glass-card p, .glass-card .text-muted {
+    color: #4a5568 !important; /* אפור כהה לקריאות מושלמת */
+    line-height: 1.6;
+}
+
+/* --- 3. Hero Section (Still the Visual Hook) --- */
+#hero {
+    background: #0b0c10; /* ה-Hero נשאר כהה כדי שהתמונות יבלטו */
+    height: 100vh;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+/* אפקט זרימה מה-Hero הכהה לרקע הבהיר של האתר */
+#hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, #f0f4f8);
+    z-index: 10;
+}
+
+#layer-bg, #layer-mid, #layer-front {
+    position: absolute;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover;
+    object-position: center bottom;
+    will-change: transform, opacity;
+    /* --- הנה השורה הקריטית --- */
+    pointer-events: none; 
+}
+#layer-bg { z-index: 1; }
+#layer-mid { z-index: 2; transform: scale(0.7) translateX(15%); transform-origin: center bottom; }
+#layer-front { z-index: 3; transform: scale(0.7) translateX(15%); transform-origin: center bottom; }
+
+.text-shadow {
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* --- 4. How It Works (Animations & Imagery) --- */
+.step-card {
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.step-card.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.img-container {
+    height: 240px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #000;
+}
+
+.step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.step-card:hover .step-img {
+    transform: scale(1.1);
+}
+
+.step-num {
+    display: inline-block;
+    font-weight: 800;
+    color: #00b8ff;
+    background: rgba(0, 184, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 184, 255, 0.2);
+}
+
+/* --- 5. UI Accents & Navigation --- */
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #00f0ff);
+    border: none;
+    padding: 14px 35px;
+    font-weight: 700;
+    border-radius: 50px;
+    color: white !important;
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.4);
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand, .nav-link {
+    color: #1a1d23 !important;
+    font-weight: 600;
+}
+
+/* --- 6. Mobile Optimization --- */
+@media (max-width: 768px) {
+    #layer-bg, #layer-mid, #layer-front {
+        transform: scale(1.1) translateX(0) !important;
+        object-position: center center;
+    }
+    
+    .display-1 { font-size: 3rem; }
+    .text-start { text-align: center !important; }
+    section { padding: 60px 0; }
+    
+    #hero::after {
+        height: 100px;
+    }
+}
+
+/* --- 7. Possibilities Section (Refined Bottom-Right Labels) --- */
+.benefits-accordion-section {
+    padding: 100px 0;
+    background: #f0f4f8; 
+}
+
+.accordion-wrapper {
+    display: flex;
+    width: 100%;
+    height: 65vh;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-item {
+    position: relative;
+    flex: 1;
+    background-size: cover;
+    background-position: center center;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.3, 1);
+    cursor: pointer;
+    /* הסרנו את המרכוז הכללי כדי שהתוכן יוכל לשבת בפינה */
+}
+
+.accordion-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); 
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.accordion-item:hover {
+    flex: 5;
+}
+
+/* המלבן הקטן בפינה הימנית למטה */
+.accordion-content {
+    position: absolute;
+    bottom: 30px; /* מרחק מהתחתית */
+    right: 30px;  /* מרחק מימין */
+    z-index: 20;
+    opacity: 0;
+    transform: translateX(20px); /* אנימציה של כניסה מימין */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
+    
+    /* עיצוב המלבן */
+    width: 320px; /* קטן וקומפקטי יותר */
+    padding: 25px !important;
+    text-align: left; /* יישור טקסט לשמאל כי זה אנגלית */
+    
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 184, 255, 0.2) !important;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item:hover .accordion-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* המספר - קטן יותר ומשולב בתוך המלבן */
+.accordion-content .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    background: #00b8ff;
+    color: white !important;
+    border-radius: 10px; /* מראה מרובע מעוגל שמתאים למלבן */
+    border: none;
+    font-weight: 800;
+}
+
+/* כותרת - קומפקטית */
+.accordion-content h3 {
+    color: #1a1d23 !important;
+    font-weight: 700;
+    font-size: 1.3rem; /* קצת יותר קטן */
+    margin-bottom: 8px;
+}
+
+/* טקסט הסבר */
+.accordion-content p {
+    color: #4a5568 !important;
+    font-size: 0.95rem !important; /* קריא אבל לא משתלט */
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* התאמה למובייל - חוזרים למרכז כי אין מקום בפינות */
+@media (max-width: 992px) {
+    .accordion-item:hover .accordion-content {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+        transform: translateY(0);
+    }
+}
+
+/* --- 8. Calculator Specific Fixes --- */
+
+/* עיצוב תיבות הקלט הבהירות */
+#calculator .bg-light {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(0, 184, 255, 0.2) !important;
+    color: #1a1d23 !important;
+    transition: all 0.3s ease;
+}
+
+/* אפקט זוהר עדין כשלוחצים על התיבה */
+#calculator .bg-light:focus {
+    background-color: #ffffff !important;
+    border-color: #00b8ff !important;
+    box-shadow: 0 0 15px rgba(0, 184, 255, 0.2);
+    outline: none;
+}
+
+/* התאמת צבע הפלייסהולדר (הטקסט הרמז בתוך התיבה) */
+#calculator .bg-light::placeholder {
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+/* תיקון צבע הכותרות הקטנות מעל התיבות */
+#calculator .text-muted.small {
+    color: #718096 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* --- 9. Footer & Form Fixes --- */
+
+/* תיקון נראות הטקסט בתוך התיבות ב-Footer */
+.footer-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important; /* צבע לבן שקוף שרואים מצוין על שחור */
+    font-size: 0.9rem;
+}
+
+/* עיצוב התיבות בזמן כתיבה */
+.footer-input:focus {
+    background-color: #1a1d23 !important; /* שומר על רקע כהה */
+    border-color: #00b8ff !important;    /* גבול כחול זוהר ב-Focus */
+    box-shadow: 0 0 10px rgba(0, 184, 255, 0.2);
+    color: #fff !important;
+    outline: none;
+}
+
+/* ריווח עדין לפסקה של החברה */
+#contact p.text-muted {
+    line-height: 1.8;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 20 !important; /* מוודא שהטקסט והכפתור מעל כל התמונות */
+}
+
+/* תיקון נקודת העצירה רק עבור סקשן היתרונות */
+#benefits {
+    scroll-margin-top: 50px; /* שנה את המספר הזה עד שהכותרת תעצור בדיוק איפה שנוח לך */
+}
